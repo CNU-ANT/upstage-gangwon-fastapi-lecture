@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  backend:
+    image: upstage-gangwon-backend:latest
+    container_name: upstage-gangwon-backend
+    ports:
+      - "8800:8800"
+    environment:
+      - UPSTAGE_API_KEY=${UPSTAGE_API_KEY}
+      - CHROMA_HOST=${CHROMA_HOST}
+      - CHROMA_PORT=${CHROMA_PORT}
+
+    networks:
+      - gangwon-network
+    restart: unless-stopped
+
+
+networks:
+  gangwon-network:
+    driver: bridge
