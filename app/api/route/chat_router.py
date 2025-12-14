@@ -6,7 +6,6 @@ from app.deps import get_chat_service
 from app.models.schemas.chat import ChatRequest
 from app.service.chat_service import ChatService
 
-
 chat_router = APIRouter(prefix="/chat", tags=["chat"])
 
 
@@ -18,4 +17,4 @@ async def chat(message: ChatRequest,
     #     # media_type="text/plain; charset=utf-8"
     #     media_type="text/event-stream; charset=utf-8"
     # )
-    return  EventSourceResponse(chat_service.upstage_chat(message),)
+    return EventSourceResponse(chat_service.upstage_chat(message))
