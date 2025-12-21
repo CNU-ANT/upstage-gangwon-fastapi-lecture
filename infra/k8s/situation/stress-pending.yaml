@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stress-pending
+  namespace: stress
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stress-pending
+  template:
+    metadata:
+      labels:
+        app: stress-pending
+    spec:
+      containers:
+        - name: stress
+          image: polinux/stress:1.0.4
+          args: ["--cpu", "1", "--timeout", "3600s"]
+          resources:
+            requests:
+              cpu: "4"         # 노드가 2코어면 배치 불가
+              memory: "8Gi"    # 노드 메모리보다 크면 배치 불가
