@@ -3,6 +3,7 @@ from fastapi import Request, HTTPException
 from fastapi.responses import JSONResponse
 from app.api.route.user_routers import router as user_router
 from app.exceptions import UserNotFoundError, EmailNotAllowedNameExistsError
+from app.api.route.agent_routers import router as agent_router
 
 app = FastAPI()
 
@@ -47,8 +48,4 @@ async def general_exception_handler(request: Request, exc: Exception):
 
 
 app.include_router(user_router)
-
-
-@app.get("/hello")
-def hello():
-    return {"message": "Hello FastAPI!"}
+app.include_router(agent_router)
