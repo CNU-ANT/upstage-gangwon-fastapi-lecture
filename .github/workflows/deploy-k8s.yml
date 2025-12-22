@@ -40,5 +40,5 @@ jobs:
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            cd /home/ubuntu/deploy/upstage-gangwon-fastapi-lecture/infra/k8s/application
+            cd /home/ubuntu/workspace/deploy/upstage-gangwon-fastapi-lecture/infra/k8s/application
             kubectl apply -f 04-backend.yaml
